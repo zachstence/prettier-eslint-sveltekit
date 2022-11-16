@@ -2,6 +2,8 @@
 
 This repo reproduces an error occurring with the Prettier ESLint VSCode Extension and SvelteKit
 
+This is a skeleton SvelteKit project created by running `npm init svelte@next`
+
 ## Reproduction steps
 1. Clone and setup this repo
 ```sh
