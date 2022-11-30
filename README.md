@@ -1,3 +1,28 @@
+# Solution found!
+
+https://github.com/idahogurl/vs-code-prettier-eslint/issues/113#issuecomment-1327929167
+
+> Rename your .prettierrc file to .prettierrc.cjs
+>
+> Paste the following as the contents
+>
+> ```js
+> module.exports = {
+> 	useTabs: true,
+> 	singleQuote: true,
+> 	trailingComma: 'none',
+> 	printWidth: 100,
+> 	plugins: [require('prettier-plugin-svelte')],
+> 	overrides: [{ files: '*.svelte', options: { parser: 'svelte' } }]
+> };
+> ```
+
+<br />
+
+---
+
+<br />
+
 # Prettier ESLint and SvelteKit error repro
 
 This repo reproduces an error occurring with the Prettier ESLint VSCode Extension and SvelteKit
@@ -5,7 +30,9 @@ This repo reproduces an error occurring with the Prettier ESLint VSCode Extensio
 This is a skeleton SvelteKit project created by running `npm init svelte@next`
 
 ## Reproduction steps
+
 1. Clone and setup this repo
+
 ```sh
 # Clone
 git clone https://github.com/zachstence/prettier-eslint-sveltekit
@@ -22,6 +49,7 @@ code prettier-eslint-sveltekit
 4. Follow troubleshooting steps here
 
 5. Observe error in the Output tab
+
 ```txt
 Error: Cannot find module 'prettier-plugin-svelte'
 Require stack:
@@ -45,16 +73,20 @@ Require stack:
 ```
 
 ## Check ESLint Configuration
+
 1. Run `npx eslint --print-config .eslintrc.js` to check if ESLint configuration is valid
 2. Observe that config prints successfully
 
 ## Try ESLint
+
 1. Run `npx eslint src/routes/+page.svelte`
 2. Observe that linting runs successfully
 
 ## Try `prettier-eslint-cli`
+
 1. Run `npx prettier-eslint-cli src/routes/+page.svelte`
 2. Observe that formatting completed successfully
+
 ```txt
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
